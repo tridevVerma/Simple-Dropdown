@@ -1,3 +1,12 @@
+/* DEFINE COLOR VARIABLES */
+:root {
+  --primary: hsl(190, 90%, 66%);
+  --primary-light: hsl(190, 90%, 72%);
+  --body-bg: hsl(0, 0%, 15%);
+  --body-text: hsl(0, 0%, 90%);
+}
+
+/* GENERAL STYLING */
 *,
 *::before,
 *::after {
@@ -17,8 +26,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: hsl(0, 0%, 15%);
-  color: hsl(0, 0%, 90%);
+  background: var(--body-bg);
+  color: var(--body-text);
 }
 
 code {
@@ -26,6 +35,7 @@ code {
     monospace;
 }
 
+/* App Component */
 .App {
   height: 100vh;
   display: flex;
@@ -41,10 +51,11 @@ h1 {
   font-weight: 600;
 }
 
+/* DropDown button */
 button.dropdown-btn {
   border: none;
-  border-bottom: 2px solid hsl(0, 0%, 15%);
-  background: hsl(192, 80%, 70%);
+  border-bottom: 2px solid var(--body-bg);
+  background: var(--primary);
   padding: 0.6rem;
   width: 15vw;
   font-size: 1.2rem;
@@ -54,16 +65,31 @@ button.dropdown-btn {
   justify-content: space-between;
 }
 
+button.dropdown-container > span {
+  background: var(--primary);
+}
+
+button.dropdown-btn,
+button.dropdown-container > span > i {
+  cursor: pointer;
+}
+
+/* Dropdown Container */
 .dropdown-container {
-  width: 15vw;
+  min-width: 15vw;
   overflow: hidden;
 }
 
 .dropdown-container ul {
+  background: var(--body-text);
+  color: var(--body-bg);
   transition: 0.25s transform;
   transform: translateY(-100%);
-  background: hsl(0, 0%, 98%);
-  color: hsl(0, 0%, 15%);
+}
+
+button.dropdown-btn:hover + .dropdown-container > ul,
+.dropdown-container ul:hover {
+  transform: translateY(0%);
 }
 
 .dropdown-container ul > li {
@@ -74,17 +100,17 @@ button.dropdown-btn {
   transition: 0.25s all;
 }
 
-button.dropdown-btn:hover + .dropdown-container > ul,
-.dropdown-container ul:hover {
-  transform: translateY(0%);
-}
-
 .dropdown-container ul > li:hover {
   padding-left: 2rem;
-  background: hsl(192, 80%, 70%);
+  background: var(--primary-light);
+  cursor: pointer;
 }
 
-.selected {
+li.selected {
   padding-left: 2rem !important;
-  background: hsl(192, 80%, 70%);
+  background: var(--primary-light);
+}
+
+.hide-dropdown {
+  transform: translateY(-100%) !important;
 }
