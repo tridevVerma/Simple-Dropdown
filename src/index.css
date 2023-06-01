@@ -54,19 +54,24 @@ h1 {
 /* DropDown button */
 button.dropdown-btn {
   border: none;
-  border-bottom: 2px solid var(--body-bg);
+  border-bottom: 5px solid var(--body-bg);
+  border-radius: 0.2rem;
   background: var(--primary);
   padding: 0.6rem;
-  width: 15vw;
   font-size: 1.2rem;
   text-align: left;
-  display: flex;
+  width: 15vw;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  justify-content: start;
   align-items: center;
-  justify-content: space-between;
 }
 
-button.dropdown-container > span {
+button.dropdown-btn > span {
   background: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 button.dropdown-btn,
@@ -76,6 +81,7 @@ button.dropdown-container > span > i {
 
 /* Dropdown Container */
 .dropdown-container {
+  border-radius: 0.2rem;
   min-width: 15vw;
   overflow: hidden;
 }
